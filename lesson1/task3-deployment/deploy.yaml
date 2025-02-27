@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-app-task3
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: busybox-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: busybox-app
+    spec:
+      containers:
+        - name: busybox-task3
+          image: stefanprodan/podinfo:6.6.2
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: 100m
+            limits:
+              memory: "100Mi"
+              cpu: 100m

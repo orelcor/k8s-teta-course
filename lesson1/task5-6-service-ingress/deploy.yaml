@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-task5-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: podinfo-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: podinfo-app
+    spec:
+      containers:
+        - name: podinfo
+          image: stefanprodan/podinfo:6.6.2
+          ports:
+            - name: http-port-id
+              containerPort: 9898
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: 100m
+            limits:
+              memory: "100Mi"
+              cpu: 100m

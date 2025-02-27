@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-config-map
+data:
+  APP_MODE: "production"
+  APP_PORT: "8080"
+  some_file: |
+    {
+      {{ mode: test }}
+    }
